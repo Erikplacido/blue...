@@ -1,0 +1,3 @@
+-- Demo backup file created Thu Aug  7 17:47:41 -03 2025
+-- This is a demonstration backup
+-- Replace with actual mysqldump in production
