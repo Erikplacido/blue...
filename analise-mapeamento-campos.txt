@@ -1,0 +1,45 @@
+ANÁLISE COMPLETA: MAPEAMENTO DE CAMPOS FRONTEND → API → DATABASE
+=====================================================================
+
+1. DADOS COLETADOS NO FRONTEND (JavaScript):
+   - executionDate = document.getElementById('execution_date')?.value
+   - timeWindow = document.getElementById('time_window')?.value  
+   - address = document.getElementById('address')?.value
+
+2. DADOS ENVIADOS PARA API (bookingData):
+   bookingData.date = executionDate        // ✅ Campo correto
+   bookingData.time = timeWindow           // ✅ Campo correto  
+   bookingData.address = address           // ✅ Campo correto
+
+3. API TENTA USAR CAMPOS ERRADOS (create-unified.php linha 179-189):
+   $booking_data['service_date']    // ❌ Campo não enviado pelo frontend
+   $booking_data['service_time']    // ❌ Campo não enviado pelo frontend
+   $booking_data['service_address'] // ❌ Campo não enviado pelo frontend
+
+4. CAMPOS REAIS NO BANCO DE DADOS:
+   scheduled_date     // ✅ Campo existe
+   scheduled_time     // ✅ Campo existe  
+   street_address     // ✅ Campo existe
+
+PROBLEMA IDENTIFICADO:
+======================
+
+O frontend envia:          A API procura por:         O banco tem:
+- date                  →  - service_date         →  - scheduled_date
+- time                  →  - service_time         →  - scheduled_time  
+- address              →  - service_address      →  - street_address
+
+RESULTADOS OBSERVADOS:
+=====================
+
+✅ scheduled_time: RECEBE VALORES
+   - Motivo: Provavelmente existe código de fallback ou outra lógica
+
+✅ street_address: RECEBE VALORES  
+   - Motivo: Provavelmente existe código de fallback ou outra lógica
+
+❌ scheduled_date: NÃO RECEBE VALORES
+   - Motivo: Não há fallback para service_date → scheduled_date
+
+❌ referral_code: NÃO RECEBE VALORES
+   - Motivo: API tenta usar unified_code que não existe no banco

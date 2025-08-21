@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗺️ Navegação do Sistema - Booking OK</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .user-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .user-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .admin .section-icon { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+        .customer .section-icon { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .professional .section-icon { background: linear-gradient(135deg, #45b7d1, #2980b9); }
+        .candidate .section-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .public .section-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .api .section-icon { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .tools .section-icon { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .section-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .page-list {
+            list-style: none;
+        }
+
+        .page-item {
+            margin-bottom: 8px;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #444;
+            background: rgba(248, 249, 250, 0.8);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .page-link:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: #e9ecef;
+        }
+
+        .page-icon {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .page-status {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+
+        .status-active { background: #d4edda; color: #155724; }
+        .status-test { background: #fff3cd; color: #856404; }
+        .status-debug { background: #f8d7da; color: #721c24; }
+
+        .quick-actions {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 30px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-booking { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .btn-admin { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+        .btn-customer { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .btn-professional { background: linear-gradient(135deg, #45b7d1, #2980b9); }
+
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(248, 249, 250, 0.8);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .user-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-map-marked-alt"></i> Sistema de Navegação</h1>
+            <p>Acesso centralizado para todas as funcionalidades do Booking OK</p>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2><i class="fas fa-rocket"></i> Acesso Rápido</h2>
+            <div class="action-buttons">
+                <a href="booking3.php" class="action-btn btn-booking">
+                    <i class="fas fa-calendar-plus"></i>&nbsp; Nova Reserva
+                </a>
+                <a href="admin/dashboard.php" class="action-btn btn-admin">
+                    <i class="fas fa-tachometer-alt"></i>&nbsp; Painel Admin
+                </a>
+                <a href="customer/dashboard.php" class="action-btn btn-customer">
+                    <i class="fas fa-user-circle"></i>&nbsp; Portal Cliente
+                </a>
+                <a href="professional/dashboard.php" class="action-btn btn-professional">
+                    <i class="fas fa-briefcase"></i>&nbsp; Portal Profissional
+                </a>
+            </div>
+        </div>
+
+        <!-- User Sections -->
+        <div class="user-sections">
+            <!-- Admin Section -->
+            <div class="user-section admin">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">🔐 Administração</div>
+                        <div class="section-description">Gestão completa do sistema</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="admin/dashboard.php" class="page-link">
+                            <i class="fas fa-tachometer-alt page-icon"></i>
+                            <span class="page-title">Dashboard Principal</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="admin/reports.php" class="page-link">
+                            <i class="fas fa-chart-line page-icon"></i>
+                            <span class="page-title">Relatórios</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="admin/training-management.php" class="page-link">
+                            <i class="fas fa-graduation-cap page-icon"></i>
+                            <span class="page-title">Gestão de Treinamentos</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Customer Section -->
+            <div class="user-section customer">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">👥 Clientes</div>
+                        <div class="section-description">Portal do cliente</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="customer/dashboard.php" class="page-link">
+                            <i class="fas fa-home page-icon"></i>
+                            <span class="page-title">Dashboard Cliente</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="customer/subscription-management.php" class="page-link">
+                            <i class="fas fa-credit-card page-icon"></i>
+                            <span class="page-title">Gerenciar Assinatura</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="payment_history.php" class="page-link">
+                            <i class="fas fa-history page-icon"></i>
+                            <span class="page-title">Histórico de Pagamentos</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Professional Section -->
+            <div class="user-section professional">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">👔 Profissionais</div>
+                        <div class="section-description">Portal do profissional</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="professional/dashboard.php" class="page-link">
+                            <i class="fas fa-briefcase page-icon"></i>
+                            <span class="page-title">Dashboard Profissional</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="professional/availability.php" class="page-link">
+                            <i class="fas fa-calendar-alt page-icon"></i>
+                            <span class="page-title">Gerenciar Disponibilidade</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="professional/complete-profile.php" class="page-link">
+                            <i class="fas fa-user-edit page-icon"></i>
+                            <span class="page-title">Completar Perfil</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="professional/register.php" class="page-link">
+                            <i class="fas fa-user-plus page-icon"></i>
+                            <span class="page-title">Cadastro Profissional</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Candidate Section -->
+            <div class="user-section candidate">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">🎓 Candidatos</div>
+                        <div class="section-description">Portal de candidatos</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="candidate/trainings.php" class="page-link">
+                            <i class="fas fa-book-reader page-icon"></i>
+                            <span class="page-title">Treinamentos</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Public Pages Section -->
+            <div class="user-section public">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">🌐 Páginas Públicas</div>
+                        <div class="section-description">Acesso livre</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="index.html" class="page-link">
+                            <i class="fas fa-home page-icon"></i>
+                            <span class="page-title">Página Inicial</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="booking.php" class="page-link">
+                            <i class="fas fa-calendar page-icon"></i>
+                            <span class="page-title">Booking V1</span>
+                            <span class="page-status status-test">Legacy</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="booking2.php" class="page-link">
+                            <i class="fas fa-calendar-check page-icon"></i>
+                            <span class="page-title">Booking V2</span>
+                            <span class="page-status status-test">Legacy</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="booking3.php" class="page-link">
+                            <i class="fas fa-calendar-plus page-icon"></i>
+                            <span class="page-title">Booking V3 (Atual)</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="booking-confirmation.php" class="page-link">
+                            <i class="fas fa-check-circle page-icon"></i>
+                            <span class="page-title">Confirmação de Reserva</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="support.php" class="page-link">
+                            <i class="fas fa-headset page-icon"></i>
+                            <span class="page-title">Suporte</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="referralclub.php" class="page-link">
+                            <i class="fas fa-gift page-icon"></i>
+                            <span class="page-title">Clube de Indicação</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- API Section -->
+            <div class="user-section api">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">🔌 APIs</div>
+                        <div class="section-description">Endpoints do sistema</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="api/stripe-checkout.php" class="page-link">
+                            <i class="fas fa-credit-card page-icon"></i>
+                            <span class="page-title">Stripe Checkout</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="api/validate-discount.php" class="page-link">
+                            <i class="fas fa-percent page-icon"></i>
+                            <span class="page-title">Validar Cupom</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="api/check-availability.php" class="page-link">
+                            <i class="fas fa-clock page-icon"></i>
+                            <span class="page-title">Verificar Disponibilidade</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="api/dashboard-complete.php" class="page-link">
+                            <i class="fas fa-chart-bar page-icon"></i>
+                            <span class="page-title">Dashboard API</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="api/pause-subscription.php" class="page-link">
+                            <i class="fas fa-pause page-icon"></i>
+                            <span class="page-title">Pausar Assinatura</span>
+                            <span class="page-status status-active">Ativo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tools Section -->
+            <div class="user-section tools">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div>
+                        <div class="section-title">🛠️ Ferramentas</div>
+                        <div class="section-description">Debug e testes</div>
+                    </div>
+                </div>
+                <ul class="page-list">
+                    <li class="page-item">
+                        <a href="debug-checkout.html" class="page-link">
+                            <i class="fas fa-bug page-icon"></i>
+                            <span class="page-title">Debug Checkout</span>
+                            <span class="page-status status-debug">Debug</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="live-price-monitor.html" class="page-link">
+                            <i class="fas fa-chart-line page-icon"></i>
+                            <span class="page-title">Monitor de Preços</span>
+                            <span class="page-status status-debug">Debug</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="booking-debug-tool.html" class="page-link">
+                            <i class="fas fa-wrench page-icon"></i>
+                            <span class="page-title">Debug Booking</span>
+                            <span class="page-status status-debug">Debug</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="direct-api-test.html" class="page-link">
+                            <i class="fas fa-vial page-icon"></i>
+                            <span class="page-title">Teste API Direto</span>
+                            <span class="page-status status-test">Teste</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a href="stripe-experience-demo.html" class="page-link">
+                            <i class="fas fa-eye page-icon"></i>
+                            <span class="page-title">Demo Stripe</span>
+                            <span class="page-status status-test">Demo</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <h3 style="text-align: center; margin-bottom: 20px; color: #333;">
+                <i class="fas fa-chart-pie"></i> Estatísticas do Sistema
+            </h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Páginas Ativas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Tipos de Usuário</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">APIs Disponíveis</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Ferramentas Debug</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click tracking
+            document.querySelectorAll('.page-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Navegando para:', this.href);
+                });
+            });
+
+            // Add hover effects
+            document.querySelectorAll('.user-section').forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                section.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Status indicator
+            const statusIndicators = document.querySelectorAll('.page-status');
+            statusIndicators.forEach(indicator => {
+                if (indicator.textContent.includes('Ativo')) {
+                    indicator.title = 'Funcionalidade ativa e operacional';
+                } else if (indicator.textContent.includes('Teste')) {
+                    indicator.title = 'Ambiente de testes';
+                } else if (indicator.textContent.includes('Debug')) {
+                    indicator.title = 'Ferramenta de debug/desenvolvimento';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
