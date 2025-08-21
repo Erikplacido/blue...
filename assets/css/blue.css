@@ -1,0 +1,2888 @@
+/**
+ * =========================================================
+ * PROJETO BLUE - LIQUID GLASS CLEANING INTERFACE (VERSÃO 7)
+ * =========================================================
+ * 
+ * @file blue7.css
+ * @description Interface Liquid Glass baseada na estrutura booking5.php
+ * @version 7.0
+ * @date 2025-08-04
+ * 
+ * CONCEITO: Liquid Glass (Vidro Líquido)
+ * - Transparências fluidas
+ * - Efeitos de refração
+ * - Sensação de pureza e limpeza
+ * - Movimento suave como água cristalina
+ * - Estrutura funcional de booking5.php com visual liquid glass
+ */
+
+/* ========================================= */
+/* VARIÁVEIS LIQUID GLASS */
+/* ========================================= */
+:root {
+  /* === PALETA LIQUID GLASS === */
+  --glass-primary: rgba(120, 190, 255, 0.95);     /* Azul cristalino */
+  --glass-primary-light: rgba(150, 210, 255, 0.8); /* Azul mais claro */
+  --glass-primary-dark: rgba(90, 160, 230, 1);      /* Azul mais escuro */
+  
+  --glass-surface: rgba(255, 255, 255, 0.35);       /* Superfície de vidro - mais opaco */
+  --glass-surface-hover: rgba(255, 255, 255, 0.5);  /* Hover mais opaco */
+  --glass-surface-active: rgba(255, 255, 255, 0.6); /* Estado ativo */
+  
+  --glass-border: #11284B;         /* Bordas translúcidas */
+  --glass-border-strong: #11284B;  /* Bordas mais visíveis - reforçadas */
+  
+  --glass-text: rgba(0, 30, 60, 0.9);               /* Texto escuro translúcido */
+  --glass-text-light: rgba(0, 30, 60, 0.7);         /* Texto secundário */
+  --glass-text-muted: rgba(0, 30, 60, 0.5);         /* Texto suave */
+  --glass-text-white: rgba(255, 255, 255, 0.95);    /* Texto branco */
+  
+  /* === BORDAS PARA CONTRASTE === */
+  --glass-input-border: #11284B;    /* Borda dos inputs */
+  --glass-input-border-hover: #11284B; /* Borda hover */
+  --glass-input-border-focus: #11284B; /* Borda focus */
+  
+  /* === GRADIENTES LIQUID === */
+  --liquid-bg: linear-gradient(135deg, 
+    rgba(120, 190, 255, 0.1) 0%, 
+    rgba(200, 230, 255, 0.15) 25%,
+    rgba(160, 210, 255, 0.1) 50%,
+    rgba(180, 220, 255, 0.12) 75%,
+    rgba(140, 200, 255, 0.08) 100%);
+    
+  --liquid-card: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.25) 100%);
+    
+  --liquid-button: linear-gradient(135deg,
+    rgba(120, 190, 255, 0.8) 0%,
+    rgba(90, 160, 230, 0.9) 50%,
+    rgba(110, 180, 250, 0.85) 100%);
+
+  /* === SOMBRAS LIQUID === */
+  --glass-shadow: 0 8px 32px rgba(120, 190, 255, 0.2);
+  --glass-shadow-hover: 0 12px 40px rgba(120, 190, 255, 0.3);
+  --glass-shadow-strong: 0 16px 48px rgba(120, 190, 255, 0.4);
+  --glass-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  
+  /* === BLUR EFFECTS === */
+  --glass-blur: blur(16px);
+  --glass-blur-strong: blur(24px);
+  --glass-blur-light: blur(8px);
+  
+  /* === TRANSITIONS === */
+  --liquid-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --liquid-transition-fast: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  --liquid-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* === TIPOGRAFIA === */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* === ESPAÇAMENTOS === */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  
+  /* === RAIOS === */
+  --radius-glass: 16px;
+  --radius-card: 20px;
+  --radius-button: 12px;
+  --radius-input: 14px;
+}
+
+/* ========================================= */
+/* RESET & BASE */
+/* ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  color: var(--glass-text);
+  background: var(--liquid-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ========================================= */
+/* LIQUID BACKGROUND ANIMATION */
+/* ========================================= */
+.liquid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    #e3f2fd 0%, 
+    #f1f8ff 25%, 
+    #e8f4fd 50%, 
+    #f5faff 75%, 
+    #eef7ff 100%);
+  z-index: -2;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.4), 
+    rgba(120, 190, 255, 0.1), 
+    rgba(120, 190, 255, 0.05));
+  backdrop-filter: var(--glass-blur-light);
+  animation: float 20s infinite ease-in-out;
+}
+
+.bubble-1 {
+  width: 120px;
+  height: 120px;
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  width: 80px;
+  height: 80px;
+  right: 15%;
+  top: 40%;
+  animation-delay: -5s;
+}
+
+.bubble-3 {
+  width: 100px;
+  height: 100px;
+  left: 20%;
+  bottom: 30%;
+  animation-delay: -10s;
+}
+
+.bubble-4 {
+  width: 60px;
+  height: 60px;
+  right: 30%;
+  top: 60%;
+  animation-delay: -15s;
+}
+
+.bubble-5 {
+  width: 140px;
+  height: 140px;
+  left: 50%;
+  top: 10%;
+  animation-delay: -8s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-5px) scale(0.9);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-20px) translateX(-10px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* ========================================= */
+/* COMPONENTES GLASS */
+/* ========================================= */
+.glass-panel {
+  background: var(--liquid-card);
+  backdrop-filter: var(--glass-blur);
+  border: none;
+  border-radius: var(--radius-glass);
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+  transition: var(--liquid-transition);
+  position: relative;
+}
+
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow-hover), var(--glass-inner-shadow);
+}
+
+.glass-card {
+  background: var(--liquid-card);
+  backdrop-filter: var(--glass-blur);
+  border: none;
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  transition: var(--liquid-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.5), 
+    transparent);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--glass-shadow-hover);
+  background: var(--glass-surface-hover);
+}
+
+.glass-card-small {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-button);
+  box-shadow: 0 4px 16px rgba(120, 190, 255, 0.15);
+  transition: var(--liquid-transition);
+}
+
+.glass-card-small:hover {
+  background: var(--glass-surface-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(120, 190, 255, 0.25);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-input);
+  padding: var(--space-3) var(--space-4);
+  color: var(--glass-text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(90, 160, 230, 0.1);
+  min-height: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.glass-input:hover {
+  border: none;
+  box-shadow: var(--glass-inner-shadow), 0 4px 12px rgba(90, 160, 230, 0.2);
+}
+
+.glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  box-shadow: 0 0 0 3px rgba(17, 40, 75, 0.3), var(--glass-inner-shadow);
+  transform: scale(1.02);
+}
+
+.glass-input::placeholder {
+  color: rgba(0, 30, 60, 0.6);
+}
+
+.glass-btn {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: var(--space-3) var(--space-6);
+  color: var(--glass-text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 4px 16px rgba(120, 190, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%); /* Efeito mais visível */
+  transition: var(--liquid-transition);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glass-btn:hover::before {
+  width: 120px; /* Efeito maior */
+  height: 120px;
+}
+
+.glass-btn:hover {
+  background: var(--glass-surface-hover);
+  border: none;
+  transform: translateY(-3px) scale(1.08); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 8px 24px rgba(120, 190, 255, 0.35); /* Sombra muito mais forte */
+}
+
+.glass-btn:active {
+  transform: translateY(-1px) scale(1.02); /* Mantém um pouco de elevação no active */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(120, 190, 255, 0.2);
+}
+
+.glass-btn-primary {
+  background: var(--liquid-button);
+  border: none;
+  color: var(--glass-text-white);
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 20px rgba(120, 190, 255, 0.4); /* Sombra muito mais forte */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text-shadow mais forte */
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transition: var(--liquid-transition);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glass-btn-primary:hover::before {
+  width: 120px;
+  height: 120px;
+}
+
+.glass-btn-primary:hover {
+  transform: translateY(-4px) scale(1.08); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-shadow-hover), var(--glass-inner-shadow), 0 8px 32px rgba(120, 190, 255, 0.6); /* Sombra ainda mais forte */
+  border: none;
+  background: linear-gradient(135deg,
+    rgba(120, 190, 255, 0.95) 0%,
+    rgba(90, 160, 230, 1) 50%,
+    rgba(110, 180, 250, 1) 100%);
+}
+
+.glass-btn-primary:active {
+  transform: translateY(-2px) scale(1.04); /* Mantém elevação no active */
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 16px rgba(120, 190, 255, 0.4);
+}
+
+.glass-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--glass-surface);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  position: relative;
+}
+
+.glass-checkbox:checked {
+  background: var(--liquid-button);
+  border: none;
+}
+
+.glass-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.glass-text {
+  color: var(--glass-text);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.glass-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  /* Glass Morphism Effect */
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
+  border: none;
+  border-radius: 0;
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+}
+
+/* ========================================= */
+/* LAYOUT ESPECÍFICO BOOKING5.PHP */
+/* ========================================= */
+.booking__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  margin-top: var(--space-8);
+  margin-bottom: 120px;
+}
+
+#pageTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+  background: linear-gradient(135deg, var(--glass-text), var(--glass-primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================= */
+/* BOOKING BAR - BARRA PRINCIPAL */
+/* ========================================= */
+.booking-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  align-items: end; /* Alinha todos os campos na base */
+  
+  /* Enhanced Glass Morphism Effect */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.12) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: none;
+  border-radius: var(--radius-card);
+  box-shadow: 
+    0 8px 32px rgba(120, 190, 255, 0.1),
+    0 16px 64px rgba(120, 190, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.8) 20%, 
+    rgba(255, 255, 255, 1) 50%, 
+    rgba(255, 255, 255, 0.8) 80%, 
+    transparent 100%);
+  z-index: 1;
+}
+
+.booking-bar::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(120, 190, 255, 0.3) 50%, 
+    transparent 100%);
+  z-index: 1;
+}
+
+.booking-bar:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  border: none;
+  box-shadow: 
+    0 12px 40px rgba(120, 190, 255, 0.15),
+    0 20px 80px rgba(120, 190, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.booking-bar__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  position: relative;
+  z-index: 2;
+}
+
+.booking-bar__label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-text-light);
+  margin-bottom: var(--space-1);
+}
+
+.booking-bar__input,
+.booking-bar__select {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: none;
+  border-radius: var(--radius-input);
+  padding: var(--space-3) var(--space-4);
+  color: var(--glass-text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--liquid-transition);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 8px rgba(120, 190, 255, 0.1),
+    0 4px 16px rgba(120, 190, 255, 0.05);
+  min-height: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.booking-bar__input:hover,
+.booking-bar__select:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 4px 12px rgba(120, 190, 255, 0.15),
+    0 8px 24px rgba(120, 190, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.booking-bar__input:focus,
+.booking-bar__select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  box-shadow: 
+    0 0 0 3px rgba(120, 190, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 8px 24px rgba(120, 190, 255, 0.2);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.booking-bar__input::placeholder {
+  color: rgba(0, 30, 60, 0.6);
+}
+
+/* Calendar Preview Styling */
+.calendar-preview {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: none;
+  border-radius: var(--radius-input);
+  padding: var(--space-3) var(--space-4);
+  color: var(--glass-text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--liquid-transition);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 8px rgba(120, 190, 255, 0.1),
+    0 4px 16px rgba(120, 190, 255, 0.05);
+  min-height: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calendar-preview:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 4px 12px rgba(120, 190, 255, 0.15),
+    0 8px 24px rgba(120, 190, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.calendar-preview:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  box-shadow: 
+    0 0 0 3px rgba(120, 190, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 8px 24px rgba(120, 190, 255, 0.2);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ========================================= */
+/* SEÇÕES */
+/* ========================================= */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+  color: var(--glass-text);
+  text-align: center;
+}
+
+/* ========================================= */
+/* INCLUSÕES - ITENS INCLUSOS */
+/* ========================================= */
+.extras-list.itens_inclusos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.item-card {
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 100px;
+}
+
+.item-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.item-card__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--glass-primary-dark);
+  font-size: 1.25rem;
+}
+
+.item-card__title {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.item-card__price {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-primary-dark);
+  margin: 0;
+}
+
+.item-card__counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.item-card__counter button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50% !important; /* Força formato circular */
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  color: var(--glass-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 4px 12px rgba(120, 190, 255, 0.2); /* Sombra mais forte */
+  padding: 0 !important; /* Remove padding da classe glass-btn */
+}
+
+.item-card__counter button:hover {
+  background: var(--glass-surface-hover);
+  color: var(--glass-primary-dark);
+  transform: translateY(-2px) scale(1.1); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 6px 20px rgba(120, 190, 255, 0.35); /* Sombra mais forte */
+}
+
+.item-card__counter button:active {
+  transform: translateY(-1px) scale(1.05); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(120, 190, 255, 0.2);
+}
+
+.item-card__counter .qty {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-text);
+  min-width: 24px;
+  text-align: center;
+}
+
+.info-icon {
+  background: none;
+  border: none;
+  color: var(--glass-text-muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: 50%;
+  transition: var(--liquid-transition);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon:hover {
+  background: var(--glass-surface);
+  color: var(--glass-primary-dark);
+  transform: scale(1.2);
+}
+
+/* ========================================= */
+/* EXTRAS E PREFERÊNCIAS */
+/* ========================================= */
+.extras-preferences-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.extras-wrapper,
+.preferences-wrapper-side {
+  padding: var(--space-6);
+}
+
+.extras-group-box,
+.preferences-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.extra-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+}
+
+.extra-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-text);
+  flex: 1;
+}
+
+.extra-price {
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-primary-dark);
+  margin-right: var(--space-4);
+}
+
+.extra-actions {
+  display: flex;
+  align-items: center;
+}
+
+.extra-counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.extra-counter button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50% !important; /* Força formato circular */
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  color: var(--glass-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 4px 12px rgba(120, 190, 255, 0.2); /* Sombra mais forte */
+  padding: 0 !important; /* Remove padding da classe glass-btn */
+}
+
+.extra-counter button:hover {
+  background: var(--glass-surface-hover);
+  border: none;
+  color: var(--glass-primary-dark);
+  transform: translateY(-2px) scale(1.1); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 6px 20px rgba(120, 190, 255, 0.35); /* Sombra mais forte */
+}
+
+.extra-counter button:active {
+  transform: translateY(-1px) scale(1.05); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(120, 190, 255, 0.2);
+}
+
+.extra-counter .qty {
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-text);
+  min-width: 20px;
+  text-align: center;
+}
+
+.preference-item {
+  padding: var(--space-4);
+}
+
+.preference-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-text);
+  cursor: pointer;
+  width: 100%;
+}
+
+.preference-text,
+.preference-select {
+  flex: 1;
+  margin-top: var(--space-2);
+  min-height: 40px;
+}
+
+.preference-note {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--glass-text-light);
+  padding: var(--space-2);
+  background: rgba(120, 190, 255, 0.1);
+  border-radius: var(--radius-button);
+  border: none;
+}
+
+/* ========================================= */
+/* DADOS PESSOAIS */
+/* ========================================= */
+.dados_pessoais-wrapper {
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.booking__label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-text);
+  margin-bottom: var(--space-4);
+}
+
+.dados_pessoais-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.dados_pessoais-input {
+  min-height: 48px;
+}
+
+/* ========================================= */
+/* SUMMARY BAR */
+/* ========================================= */
+#summaryBar {
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(17, 40, 75, 0.75); /* Cor da barra - Navy com maior transparência para glass morphism */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+#openSummaryBtn {
+  background: #F0D71A; /* Botão - Dourado */
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: var(--space-3) var(--space-6);
+  color: #11284B; /* Texto do botão - Navy */
+  font-family: inherit;
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  min-height: 48px;
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 20px rgba(240, 215, 26, 0.4); /* Sombra dourada */
+  text-shadow: none; /* Remove text-shadow para melhor legibilidade */
+}
+
+#openSummaryBtn:hover {
+  transform: translateY(-3px) scale(1.05); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-shadow-hover), var(--glass-inner-shadow), 0 8px 32px rgba(240, 215, 26, 0.6); /* Sombra dourada mais forte */
+  border: none;
+  background: #F5E555; /* Hover mais claro */
+  color: #11284B; /* Mantém texto Navy */
+}
+
+#openSummaryBtn:active {
+  transform: translateY(-1px) scale(1.02); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 16px rgba(240, 215, 26, 0.4);
+}
+
+.summary-label {
+  font-weight: var(--font-weight-medium);
+  color: #F0D71A; /* Texto sobre a barra - Dourado */
+  margin-right: var(--space-2);
+}
+
+.summary-total {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: #F0D71A; /* Texto sobre a barra - Dourado */
+}
+
+/* ========================================= */
+/* MODAIS */
+/* ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: var(--glass-blur);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-content {
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+  position: relative;
+}
+
+.modal-terms {
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+  position: relative;
+}
+
+.modal-close,
+.close-terms-btn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  color: var(--glass-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 4px 12px rgba(120, 190, 255, 0.2); /* Sombra mais forte */
+}
+
+.modal-close:hover,
+.close-terms-btn:hover {
+  background: rgba(244, 67, 54, 0.2); /* Fundo vermelho translúcido */
+  color: rgba(244, 67, 54, 0.9); /* Texto vermelho */
+  transform: translateY(-2px) scale(1.1); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 6px 20px rgba(244, 67, 54, 0.25); /* Sombra vermelha */
+}
+
+.modal-close:active,
+.close-terms-btn:active {
+  transform: translateY(-1px) scale(1.05); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(244, 67, 54, 0.15);
+}
+
+.summary-content {
+  margin-bottom: var(--space-6);
+}
+
+.summary-section {
+  margin-bottom: var(--space-4);
+}
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-text);
+  margin-bottom: var(--space-2);
+}
+
+.input-with-btn {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.discount-input {
+  flex: 1;
+}
+
+.apply-btn {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: var(--space-3) var(--space-5);
+  color: var(--glass-text);
+  font-family: inherit;
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-inner-shadow), 0 4px 16px rgba(120, 190, 255, 0.2); /* Sombra mais forte */
+  flex-shrink: 0;
+}
+
+.apply-btn:hover {
+  background: var(--glass-surface-hover);
+  border: none;
+  color: var(--glass-primary-dark);
+  transform: translateY(-2px) scale(1.05); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 6px 20px rgba(120, 190, 255, 0.35); /* Sombra mais forte */
+}
+
+.apply-btn:active {
+  transform: translateY(-1px) scale(1.02); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(120, 190, 255, 0.2);
+}
+
+.discounts-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+  color: var(--glass-text-light);
+  cursor: pointer;
+  margin-bottom: var(--space-4);
+}
+
+.terms-link {
+  color: var(--glass-primary-dark);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.terms-content {
+  padding: var(--space-4);
+  color: var(--glass-text);
+  line-height: 1.6;
+}
+
+.terms-content ul {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+}
+
+.terms-content li {
+  margin-bottom: var(--space-2);
+}
+
+.btn-summary {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.btn-confirm {
+  flex: 1;
+  background: var(--liquid-button);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: var(--space-4) var(--space-6);
+  color: var(--glass-text-white);
+  font-family: inherit;
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  font-size: 1.125rem;
+  min-height: 56px;
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 20px rgba(120, 190, 255, 0.4); /* Sombra muito mais forte */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text-shadow mais forte */
+}
+
+.btn-confirm:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.05); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-shadow-hover), var(--glass-inner-shadow), 0 8px 32px rgba(120, 190, 255, 0.6); /* Sombra ainda mais forte */
+  border: none;
+  background: linear-gradient(135deg,
+    rgba(120, 190, 255, 0.95) 0%,
+    rgba(90, 160, 230, 1) 50%,
+    rgba(110, 180, 250, 1) 100%);
+}
+
+.btn-confirm:active:not(:disabled) {
+  transform: translateY(-1px) scale(1.02); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow), 0 4px 16px rgba(120, 190, 255, 0.4);
+}
+
+.btn-confirm:disabled {
+  background: var(--glass-surface);
+  color: var(--glass-text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.price-note {
+  font-size: 0.875rem;
+  color: var(--glass-text-light);
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ========================================= */
+/* CALENDAR SPECIFIC STYLES */
+/* ========================================= */
+.calendar-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--space-2);
+  padding: var(--space-4);
+  z-index: 1000;
+  display: none;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.calendar-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-light);
+  border: none;
+  color: var(--glass-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--liquid-transition);
+  font-weight: var(--font-weight-bold); /* Peso mais forte */
+  box-shadow: var(--glass-inner-shadow), 0 4px 12px rgba(120, 190, 255, 0.2); /* Sombra mais forte */
+}
+
+.calendar-nav:hover {
+  background: var(--glass-surface-hover);
+  color: var(--glass-primary-dark);
+  transform: translateY(-2px) scale(1.1); /* Efeito mais pronunciado */
+  box-shadow: var(--glass-inner-shadow), 0 6px 20px rgba(120, 190, 255, 0.35); /* Sombra mais forte */
+}
+
+.calendar-nav:active {
+  transform: translateY(-1px) scale(1.05); /* Mantém um pouco de elevação */
+  box-shadow: var(--glass-inner-shadow), 0 2px 8px rgba(120, 190, 255, 0.2);
+}
+
+.calendar-title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--glass-text);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--glass-text-light);
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-1);
+}
+
+/* ========================================= */
+/* UTILITÁRIOS */
+/* ========================================= */
+.hidden {
+  display: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mt-1 {
+  margin-top: var(--space-1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-gray {
+  color: var(--glass-text-light);
+}
+
+.message-box {
+  padding: var(--space-2);
+  border-radius: var(--radius-button);
+  background: rgba(120, 190, 255, 0.1);
+}
+
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--radius-button);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-medium);
+}
+
+.alert-success {
+  background: rgba(76, 175, 80, 0.1);
+  color: rgba(46, 125, 50, 0.9);
+  border: none;
+}
+
+.alert-error {
+  background: rgba(244, 67, 54, 0.1);
+  color: rgba(198, 40, 40, 0.9);
+  border: none;
+}
+
+.scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE */
+/* ========================================= */
+@media (max-width: 1024px) {
+  .booking-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .extras-list.itens_inclusos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .booking__container {
+    margin: var(--space-4);
+    padding: var(--space-4);
+  }
+  
+  .booking-bar {
+    grid-template-columns: 1fr;
+  }
+  
+  .extras-preferences-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .extras-list.itens_inclusos {
+    grid-template-columns: 1fr;
+  }
+  
+  .dados_pessoais-container {
+    grid-template-columns: 1fr;
+  }
+  
+  #summaryBar {
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+  
+  #openSummaryBtn {
+    width: 100%;
+  }
+  
+  .item-card {
+    padding: var(--space-4);
+    min-height: 80px;
+  }
+  
+  .item-card__counter {
+    margin-top: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  #pageTitle {
+    font-size: 2rem;
+  }
+  
+  .item-card__counter button,
+  .extra-counter button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important; /* Mantém formato circular em mobile */
+    padding: 0 !important; /* Remove padding em mobile */
+  }
+  
+  .preference-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+/* ========================================= */
+/* ACESSIBILIDADE */
+/* ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .bubble {
+    animation: none;
+  }
+}
+
+/* Focus melhorado */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: none;
+  outline-offset: 2px;
+}
+
+/* ========================================= */
+/* EFEITOS ESPECIAIS LIQUID */
+/* ========================================= */
+@keyframes liquidRipple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.liquid-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  animation: liquidRipple 0.6s ease-out;
+}
+
+/* ========================================= */
+/* PRINT STYLES */
+/* ========================================= */
+@media print {
+  .liquid-bg,
+  .bubble,
+  #summaryBar,
+  .modal-overlay {
+    display: none !important;
+  }
+  
+  .glass-panel,
+  .glass-card,
+  .glass-input,
+  .glass-btn {
+    background: white !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  .glass-text {
+    color: black !important;
+    text-shadow: none !important;
+  }
+}
+
+/* ========================================= */
+/* ESTILOS DO CALENDÁRIO AVANÇADO - v2.1 */
+/* ========================================= */
+
+/* Container principal do calendário */
+.calendar-preview {
+  background: var(--glass-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--glass-text);
+  font-weight: 500;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.calendar-preview:hover {
+  background: var(--glass-surface-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(17, 40, 75, 0.15);
+}
+
+.calendar-preview:focus {
+  outline: 2px solid var(--glass-primary);
+  outline-offset: 2px;
+}
+
+.calendar-preview[aria-expanded="true"] {
+  background: var(--glass-surface-active);
+  border-color: var(--glass-primary);
+}
+
+/* Popover do calendário */
+.calendar-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-top: 8px;
+  background: var(--glass-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(17, 40, 75, 0.2);
+  display: none;
+  animation: calendar-fade-in 0.2s ease-out;
+}
+
+@keyframes calendar-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header do calendário */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-nav {
+  background: rgba(17, 40, 75, 0.1);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--glass-text);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-nav:hover {
+  background: rgba(17, 40, 75, 0.2);
+  transform: scale(1.05);
+}
+
+.calendar-nav:active {
+  transform: scale(0.95);
+}
+
+#calendarMonth {
+  margin: 0;
+  color: var(--glass-text);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  flex: 1;
+}
+
+/* Dias da semana */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-weight: 600;
+  padding: 8px 4px;
+  color: var(--glass-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Grade do calendário */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+/* Estados dos dias */
+.calendar-day.empty {
+  cursor: default;
+  visibility: hidden;
+}
+
+.calendar-day.available {
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--glass-text);
+  border-color: rgba(17, 40, 75, 0.2);
+}
+
+.calendar-day.available:hover {
+  background: rgba(120, 190, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(120, 190, 255, 0.3);
+  border-color: var(--glass-primary);
+}
+
+.calendar-day.disabled {
+  background: rgba(17, 40, 75, 0.1);
+  color: var(--glass-text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendar-day.sunday {
+  background: rgba(255, 100, 100, 0.1);
+  color: rgba(200, 50, 50, 0.7);
+}
+
+.calendar-day.too-soon {
+  background: rgba(255, 165, 0, 0.1);
+  color: rgba(200, 130, 0, 0.7);
+}
+
+.calendar-day.today {
+  border-color: var(--glass-primary);
+  font-weight: 700;
+}
+
+.calendar-day.selected {
+  background: linear-gradient(135deg, var(--glass-primary) 0%, var(--glass-primary-light) 100%);
+  color: white;
+  font-weight: 700;
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(120, 190, 255, 0.4);
+  border-color: var(--glass-primary-dark);
+}
+
+.calendar-day.selected:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(120, 190, 255, 0.5);
+}
+
+/* Container de horários */
+.time-slots {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(17, 40, 75, 0.2);
+}
+
+.time-slots.hidden {
+  display: none;
+}
+
+.time-slots-title {
+  margin: 0 0 12px 0;
+  color: var(--glass-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+}
+
+.time-slot {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(17, 40, 75, 0.2);
+  border-radius: 8px;
+  color: var(--glass-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+}
+
+.time-slot:hover {
+  background: rgba(120, 190, 255, 0.2);
+  transform: translateY(-1px);
+  border-color: var(--glass-primary);
+}
+
+.time-slot.selected {
+  background: linear-gradient(135deg, var(--glass-primary) 0%, var(--glass-primary-light) 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(120, 190, 255, 0.4);
+  border-color: var(--glass-primary-dark);
+}
+
+.time-slot.disabled {
+  background: rgba(17, 40, 75, 0.1);
+  color: var(--glass-text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .calendar-popover {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .calendar-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  #calendarMonth {
+    font-size: 16px;
+  }
+  
+  .calendar-day {
+    font-size: 13px;
+  }
+  
+  .time-slots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 6px;
+  }
+  
+  .time-slot {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Animações específicas do calendário */
+@keyframes pulse-calendar {
+  0% {
+    box-shadow: 0 0 0 0 rgba(120, 190, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(120, 190, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(120, 190, 255, 0);
+  }
+}
+
+.calendar-day.selected {
+  animation: pulse-calendar 2s infinite;
+}
+
+/* Estados de foco para acessibilidade */
+.calendar-day:focus {
+  outline: 2px solid var(--glass-primary);
+  outline-offset: 2px;
+}
+
+.time-slot:focus {
+  outline: 2px solid var(--glass-primary);
+  outline-offset: 2px;
+}
+
+/* Tooltips para dias desabilitados */
+.calendar-day.disabled::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1001;
+}
+
+.calendar-day.disabled:hover::after {
+  opacity: 1;
+}
+
+/* Indicadores visuais */
+.calendar-day.has-booking::before {
+  content: '•';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: var(--glass-primary);
+  font-size: 12px;
+}
+
+/* Estilo para data atual */
+.calendar-day.today::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--glass-primary);
+  border-radius: 50%;
+}
+
+.calendar-day.today.selected::after {
+  background: white;
+}
+
+/* Melhorias visuais para estados combinados */
+.calendar-day.today.available:hover {
+  box-shadow: 0 2px 8px rgba(120, 190, 255, 0.3), 0 0 0 2px var(--glass-primary);
+}
+
+.calendar-day.selected.today {
+  box-shadow: 0 4px 16px rgba(120, 190, 255, 0.4), 0 0 0 2px var(--glass-primary-dark);
+}
+
+/* ========================================= */
+/* FLATPICKR CUSTOMIZATION - v3.0 */
+/* ========================================= */
+
+/* Z-index elevado para o calendário */
+.flatpickr-calendar {
+  z-index: 9999 !important;
+  background: var(--glass-surface) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(17, 40, 75, 0.2) !important;
+}
+
+/* Garantir que os wrappers não escondam o calendário */
+.booking-form,
+.wrapper-calendar,
+.booking-bar,
+.booking__container {
+  overflow: visible !important;
+}
+
+/* Estilo do input do calendário */
+#execution_date {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--glass-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#execution_date:hover {
+  background: var(--glass-surface-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(17, 40, 75, 0.15);
+}
+
+#execution_date:focus {
+  outline: 2px solid var(--glass-primary);
+  outline-offset: 2px;
+  border-color: var(--glass-primary);
+}
+
+/* Customização do header do Flatpickr */
+.flatpickr-calendar .flatpickr-month {
+  background: transparent !important;
+  color: var(--glass-text) !important;
+}
+
+.flatpickr-calendar .flatpickr-current-month {
+  color: var(--glass-text) !important;
+}
+
+.flatpickr-calendar .flatpickr-prev-month,
+.flatpickr-calendar .flatpickr-next-month {
+  background: rgba(17, 40, 75, 0.1) !important;
+  border-radius: 8px !important;
+  color: var(--glass-text) !important;
+  transition: all 0.2s ease !important;
+}
+
+.flatpickr-calendar .flatpickr-prev-month:hover,
+.flatpickr-calendar .flatpickr-next-month:hover {
+  background: rgba(17, 40, 75, 0.2) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Customização dos dias da semana */
+.flatpickr-calendar .flatpickr-weekdays {
+  background: transparent !important;
+}
+
+.flatpickr-calendar .flatpickr-weekday {
+  background: transparent !important;
+  color: var(--glass-text-muted) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Customização dos dias */
+.flatpickr-calendar .flatpickr-day {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(17, 40, 75, 0.2) !important;
+  border-radius: 8px !important;
+  color: var(--glass-text) !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  margin: 1px !important;
+}
+
+.flatpickr-calendar .flatpickr-day:hover {
+  background: rgba(120, 190, 255, 0.2) !important;
+  border-color: var(--glass-primary) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 8px rgba(120, 190, 255, 0.3) !important;
+}
+
+/* Dia atual */
+.flatpickr-calendar .flatpickr-day.today {
+  border-color: var(--glass-primary) !important;
+  font-weight: 700 !important;
+}
+
+.flatpickr-calendar .flatpickr-day.today:after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--glass-primary);
+  border-radius: 50%;
+}
+
+/* Dia selecionado */
+.flatpickr-calendar .flatpickr-day.selected {
+  background: linear-gradient(135deg, var(--glass-primary) 0%, var(--glass-primary-light) 100%) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border-color: var(--glass-primary-dark) !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 16px rgba(120, 190, 255, 0.4) !important;
+}
+
+.flatpickr-calendar .flatpickr-day.selected:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(120, 190, 255, 0.5) !important;
+}
+
+/* Dias desabilitados (domingos e < 48h) */
+.flatpickr-calendar .flatpickr-day.flatpickr-disabled {
+  background: rgba(17, 40, 75, 0.1) !important;
+  color: var(--glass-text-muted) !important;
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+}
+
+/* Animação do calendário */
+.flatpickr-calendar.open {
+  animation: flatpickr-fade-in 0.2s ease-out !important;
+}
+
+@keyframes flatpickr-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade para Flatpickr */
+@media (max-width: 768px) {
+  .flatpickr-calendar {
+    border-radius: 12px !important;
+    margin-top: 4px !important;
+  }
+  
+  .flatpickr-calendar .flatpickr-day {
+    height: 32px !important;
+    line-height: 30px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   CALENDÁRIO PERSONALIZADO v4.2 - UX ENHANCEMENTS + ACESSIBILIDADE
+   ========================================================= */
+
+/* Garantir que contêineres não cortem o calendário */
+.booking__container,
+.booking-form,
+.booking-bar,
+.booking-bar__item,
+.my-calendar,
+.calendar-wrapper {
+    overflow: visible !important;
+    /* Remover transforms que criam stacking context */
+    transform: none !important;
+}
+
+/* Wrapper principal do calendário (apenas o input agora) */
+.calendar-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Input do calendário */
+.calendar-input {
+    cursor: pointer !important;
+    background: var(--glass-surface) !important;
+    border: 2px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    color: var(--glass-text) !important;
+    width: 100% !important;
+    backdrop-filter: blur(20px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.calendar-input:hover {
+    border-color: var(--glass-primary) !important;
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+.calendar-input:focus {
+    outline: 2px solid var(--glass-primary) !important;
+    outline-offset: 2px !important;
+    border-color: var(--glass-primary) !important;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Popup do calendário - RENDERIZADO NO BODY */
+.calendar-popup {
+    /* Posicionamento fixo no body para evitar stacking context */
+    position: fixed !important;
+    z-index: 3000 !important; /* Z-index lógico - calendários */
+    
+    /* Visual Liquid Glass */
+    background: var(--glass-surface);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 32px 100px rgba(0, 0, 0, 0.3),
+        0 16px 50px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    
+    /* Layout */
+    padding: 24px;
+    min-width: 320px;
+    max-width: 400px;
+    
+    /* Animação inicial (escondido) */
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Garantir que não seja cortado */
+    overflow: visible !important;
+    
+    /* Acessibilidade */
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+}
+
+/* Foco para acessibilidade */
+.calendar-popup:focus {
+    outline: 2px solid var(--glass-primary);
+    outline-offset: 2px;
+}
+
+/* Estado ativo - animação de entrada */
+.calendar-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Header do calendário */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Navegação (botões de mês) */
+.calendar-nav {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--glass-border);
+    background: var(--glass-surface);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    color: var(--glass-text);
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-nav:hover {
+    background: var(--glass-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+}
+
+.calendar-nav:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.calendar-nav:focus {
+    outline: 2px solid var(--glass-primary);
+    outline-offset: 2px;
+}
+
+/* Título do mês/ano */
+.calendar-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--glass-text);
+    text-align: center;
+    letter-spacing: -0.01em;
+    flex: 1;
+    margin: 0 16px;
+}
+
+/* Grade do calendário */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+}
+
+/* Cabeçalhos dos dias da semana */
+.calendar-weekday {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--glass-text-muted, #666);
+    padding: 8px 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--glass-surface);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    border: 1px solid var(--glass-border);
+}
+
+/* Dias do calendário */
+.calendar-day {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-surface);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    color: var(--glass-text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover nos dias disponíveis */
+.calendar-day:not(.disabled):hover {
+    background: var(--glass-primary);
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    border-color: var(--glass-primary);
+}
+
+/* Foco nos dias */
+.calendar-day:focus {
+    outline: 2px solid var(--glass-primary);
+    outline-offset: 2px;
+    background: rgba(0, 123, 255, 0.1);
+    border-color: var(--glass-primary);
+}
+
+/* Dia hoje */
+.calendar-day.today {
+    background: rgba(0, 123, 255, 0.2);
+    color: var(--glass-primary);
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+    border-color: var(--glass-primary);
+}
+
+.calendar-day.today::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--glass-primary);
+    border-radius: 50%;
+    animation: todayPulse 2s infinite;
+}
+
+@keyframes todayPulse {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.5; transform: translateX(-50%) scale(1.2); }
+}
+
+/* Dia selecionado */
+.calendar-day.selected {
+    background: var(--glass-primary) !important;
+    color: white !important;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+    transform: scale(1.1);
+    border-color: var(--glass-primary);
+    animation: daySelect 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.calendar-day.selected:hover {
+    background: rgba(0, 86, 204, 1) !important;
+    transform: scale(1.1);
+}
+
+@keyframes daySelect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
+}
+
+/* Dias desabilitados */
+.calendar-day.disabled {
+    background: rgba(var(--glass-text-rgb, 0, 0, 0), 0.05) !important;
+    color: rgba(var(--glass-text-rgb, 0, 0, 0), 0.3) !important;
+    cursor: not-allowed !important;
+    opacity: 0.5;
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: rgba(var(--glass-border-rgb, 0, 0, 0), 0.1);
+}
+
+/* Domingos específicos */
+.calendar-day.sunday {
+    background: rgba(255, 87, 87, 0.1) !important;
+    color: #ff5757 !important;
+    border-color: rgba(255, 87, 87, 0.3);
+    position: relative;
+}
+
+.calendar-day.sunday::before {
+    content: '🚫';
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+/* Dias de outros meses */
+.calendar-day.other-month {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: transparent !important;
+    border-color: transparent;
+}
+
+/* ======= TOOLTIPS E FEEDBACK VISUAL ======= */
+.calendar-day[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 5000; /* Tooltips - valor lógico */
+    animation: tooltipShow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes tooltipShow {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ======= RESPONSIVIDADE AVANÇADA ======= */
+
+/* Mobile */
+@media (max-width: 768px) {
+    .calendar-popup {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.9);
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        margin: 20px;
+        overflow: auto;
+    }
+    
+    .calendar-popup.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    /* Aumentar área de toque no mobile */
+    .calendar-day,
+    .calendar-nav {
+        min-width: 44px;
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .calendar-grid {
+        gap: 8px;
+    }
+    
+    .calendar-title {
+        font-size: 16px;
+        margin: 0 12px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .calendar-popup {
+        max-width: 85vw;
+    }
+}
+
+/* ======= ACESSIBILIDADE AVANÇADA ======= */
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .calendar-popup {
+        background: white;
+        border: 3px solid #000;
+        backdrop-filter: none;
+    }
+    
+    .calendar-day {
+        background: white;
+        border: 2px solid #000;
+        backdrop-filter: none;
+    }
+    
+    .calendar-day.selected {
+        background: #000 !important;
+        color: white !important;
+    }
+    
+    .calendar-nav {
+        background: white;
+        border: 2px solid #000;
+        backdrop-filter: none;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .calendar-popup,
+    .calendar-day,
+    .calendar-nav {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .calendar-day.today::after {
+        animation: none !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .calendar-popup {
+        background: rgba(44, 44, 46, 0.95);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .calendar-title {
+        color: #f2f2f7;
+    }
+    
+    .calendar-weekday {
+        color: #98989d;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .calendar-day {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f2f2f7;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .calendar-nav {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f2f2f7;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.calendar-popup.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+}
+
+/* Header do calendário */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calendar-nav {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--glass-text);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-nav:hover {
+    background: rgba(0, 123, 255, 0.15);
+    border-color: var(--glass-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
+}
+
+.calendar-nav:active {
+    transform: translateY(0);
+}
+
+.calendar-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--glass-text);
+    text-align: center;
+    min-width: 160px;
+}
+
+/* Grid do calendário */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-weekday {
+    text-align: center;
+    padding: 12px 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--glass-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    color: var(--glass-text);
+    backdrop-filter: blur(5px);
+    min-height: 40px;
+}
+
+.calendar-day:hover:not(.disabled):not(.sunday) {
+    background: rgba(0, 123, 255, 0.15);
+    border-color: var(--glass-primary);
+    color: var(--glass-primary-dark);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
+}
+
+.calendar-day.today {
+    background: linear-gradient(135deg, 
+        rgba(0, 123, 255, 0.2) 0%, 
+        rgba(0, 123, 255, 0.3) 100%);
+    border-color: var(--glass-primary);
+    font-weight: 700;
+    color: var(--glass-primary-dark);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.calendar-day.selected {
+    background: linear-gradient(135deg, 
+        var(--glass-primary) 0%, 
+        var(--glass-primary-dark) 100%);
+    color: white;
+    font-weight: 700;
+    border-color: var(--glass-primary-dark);
+    box-shadow: 
+        0 8px 25px rgba(0, 123, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px) scale(1.02);
+}
+
+.calendar-day.disabled {
+    color: var(--glass-text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.calendar-day.sunday {
+    color: #dc3545;
+    text-decoration: line-through;
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.2);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.calendar-day.sunday:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.calendar-day.other-month {
+    opacity: 0.25;
+    color: var(--glass-text-muted);
+}
+
+/* Responsividade mobile */
+@media (max-width: 768px) {
+    .calendar-popup {
+        /* Em mobile, centralizar na tela */
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 90vw;
+        max-width: 350px;
+        padding: 20px;
+    }
+    
+    .calendar-popup.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .calendar-day {
+        font-size: 16px;
+        min-height: 44px; /* Melhor para toque */
+    }
+    
+    .calendar-nav {
+        font-size: 24px;
+        padding: 10px 14px;
+        min-width: 44px;
+    }
+    
+    .calendar-title {
+        font-size: 16px;
+        min-width: 140px;
+    }
+}
+
+/* Overlay para fechar calendário no mobile */
+@media (max-width: 768px) {
+    .calendar-popup.show::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: -1;
+    }
+}
+
+/* ========================================= */
+/* CORREÇÃO: BOTÕES CIRCULARES - FORÇA FORMATO PERFEITO */
+/* ========================================= */
+
+/* Garantir que botões +/- sejam sempre perfeitamente circulares */
+button.plus,
+button.minus,
+.item-card__counter button.glass-btn,
+.extra-counter button.glass-btn {
+  border-radius: 50% !important;
+  padding: 0 !important;
+  min-width: unset !important;
+  aspect-ratio: 1 / 1; /* Garante proporção 1:1 */
+  flex-shrink: 0; /* Previne deformação */
+}
+
+/* Especificidade extra para inclusões */
+.item-card__counter .plus.glass-btn,
+.item-card__counter .minus.glass-btn {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+
+/* Especificidade extra para extras */
+.extra-counter .plus.glass-btn,
+.extra-counter .minus.glass-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+
+/* Correção para mobile - mantém formato circular */
+@media (max-width: 480px) {
+  button.plus,
+  button.minus,
+  .item-card__counter button.glass-btn,
+  .extra-counter button.glass-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+  }
+}
+
+/* ========================================= */
+/* PREFERÊNCIAS REFINADAS COM INDICAÇÃO DE PREÇOS */
+/* ========================================= */
+
+.preferences-subtitle {
+  font-size: 0.875rem;
+  color: var(--glass-text-muted);
+  margin-bottom: var(--space-4);
+  text-align: center;
+  font-style: italic;
+}
+
+.preference-name-with-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.preference-price-badge {
+  background: var(--glass-primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(120, 190, 255, 0.3);
+  transition: var(--liquid-transition);
+}
+
+.preference-item:hover .preference-price-badge {
+  background: var(--glass-primary-dark);
+  transform: scale(1.05);
+}
+
+.preference-fee-indicator {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+  border-radius: var(--radius-sm);
+  transition: var(--liquid-transition);
+}
+
+.preference-fee-indicator.active {
+  display: block !important;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.fee-text {
+  font-size: 0.8125rem;
+  color: #28a745;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.fee-text::before {
+  content: '✓';
+  color: #28a745;
+  font-weight: bold;
+}
+
+.fee-amount {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Melhorias para checkboxes com preço */
+.preference-checkbox:checked + .preference-price-badge {
+  background: #28a745;
+  transform: scale(1.1);
+}
+
+/* Melhorias para selects com opções de preço */
+.preference-select option[data-fee="0"] {
+  color: var(--glass-text);
+}
+
+.preference-select option[data-fee]:not([data-fee="0"]) {
+  color: var(--glass-primary-dark);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Animações para indicadores de taxa */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+  }
+}
+
+.preference-item.fee-applied {
+  animation: pulseGreen 1.5s ease-out;
+}
+
+/* Estados visuais para diferentes tipos de preferência */
+.preference-item[data-field-type="checkbox"] .preference-label {
+  cursor: pointer;
+}
+
+.preference-item[data-field-type="checkbox"]:hover {
+  background: var(--glass-surface-hover);
+}
+
+.preference-item[data-extra-fee]:not([data-extra-fee="0"]) {
+  border-left: 3px solid var(--glass-primary);
+}
+
+.preference-item[data-extra-fee]:not([data-extra-fee="0"]):hover {
+  border-left-color: var(--glass-primary-dark);
+}
+
+/* ========================================= */

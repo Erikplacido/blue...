@@ -1,0 +1,420 @@
+/* ========================================= */
+/* HIERARQUIA NORMALIZADA DE Z-INDEX */
+/* ========================================= */
+/* Escala:
+   0-10 base / cards / títulos
+   20 ícones internos
+   500 dropdowns (autocomplete, calendário se alinhar)
+   900 notificações
+   1000 modal overlay
+   1001 modal content */
+
+/* Unificação: remover definição duplicada anterior de .pac-container (mantido bloco completo abaixo) */
+
+/* Ajuste modal (abaixo apenas se ainda for necessário neste arquivo) */
+.modal-overlay { z-index: 1000 !important; }
+.modal-content-redesign { z-index: 1001 !important; }
+
+/* Ícones internos - REMOVIDOS */
+.address-main-icon,
+.address-status-icon,
+.address-field-wrapper .google-icon { 
+    display: none !important; 
+    z-index: 20 !important; 
+}
+
+/* Notifications */
+.google-places-notification { z-index: 900 !important; }
+
+/* Campo input não precisa alto z-index */
+.google-places-autocomplete { z-index: 10 !important; }
+
+/* ========================================= */
+/* Container principal do dropdown (UNIFICADO) */
+/* ========================================= */
+.pac-container {
+    position: absolute !important;
+    z-index: 1000 !important; /* Valor único e lógico - UNIFICADO */
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(40px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    margin-top: 4px !important;
+    overflow: hidden !important;
+    max-width: calc(100vw - 40px) !important;
+    min-width: 300px !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Remove o logo "Powered by Google" padrão */
+.pac-container:after {
+    background-image: none !important;
+    height: 0 !important;
+    content: none !important;
+}
+
+.pac-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    cursor: pointer !important;
+    line-height: 30px !important;
+    padding: 16px !important;
+    text-overflow: ellipsis !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    background: transparent !important;
+}
+
+.pac-item:last-child {
+    border-bottom: none !important;
+}
+
+.pac-item:hover {
+    background-color: rgba(102, 126, 234, 0.08) !important;
+}
+
+.pac-item-selected,
+.pac-item-selected:hover {
+    background-color: rgba(102, 126, 234, 0.12) !important;
+}
+
+.pac-matched {
+    font-weight: 700 !important;
+    color: #667eea !important;
+}
+
+.pac-item-query {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #2d3748 !important;
+    display: block !important;
+    margin-bottom: 2px !important;
+}
+
+/* Texto secundário mais sutil */
+.pac-item .pac-item-query .pac-matched {
+    color: #667eea !important;
+}
+
+.pac-item span:not(.pac-item-query) {
+    color: #718096 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+/* ========================================= */
+/* CORREÇÕES PARA CONFLITOS COM MODAIS */
+/* ========================================= */
+
+/* ========================================= */
+/* ÍCONES DO CAMPO */
+/* ========================================= */
+
+/* Ícones do campo - REMOVIDOS */
+.address-main-icon,
+.address-status-icon {
+    display: none !important;
+    user-select: none;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.address-main-icon:hover {
+    display: none !important;
+    opacity: 1;
+}
+
+.address-field-wrapper .google-icon {
+    display: none !important;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+}
+
+.address-field-wrapper:hover .google-icon {
+    display: none !important;
+    opacity: 1;
+}
+
+/* ========================================= */
+/* LOADING STATES E VISUAL FEEDBACK */
+/* ========================================= */
+
+/* Loading state melhorado */
+.google-places-autocomplete.loading {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23667eea' d='M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z' opacity='.5'/%3E%3Cpath fill='%23667eea' d='M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z'%3E%3CanimateTransform attributeName='transform' dur='1s' from='0 12 12' repeatCount='indefinite' to='360 12 12' type='rotate'/%3E%3C/path%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 35px center !important;
+    background-size: 20px !important;
+}
+
+/* Estados de sucesso e erro */
+.google-places-autocomplete.success {
+    border-color: #48bb78 !important;
+    background-color: rgba(72, 187, 120, 0.05) !important;
+    animation: fieldSuccess 0.3s ease;
+}
+
+.google-places-autocomplete.error {
+    border-color: #f56565 !important;
+    background-color: rgba(245, 101, 101, 0.05) !important;
+}
+
+/* Notificações */
+.google-places-notification {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.4;
+    backdrop-filter: blur(10px);
+    z-index: 10001;
+}
+
+.google-places-notification.success {
+    background: rgba(72, 187, 120, 0.1);
+    border-color: #48bb78;
+}
+
+.google-places-notification.error {
+    background: rgba(245, 101, 101, 0.1);
+    border-color: #f56565;
+}
+
+.google-places-notification.warning {
+    background: rgba(237, 137, 54, 0.1);
+    border-color: #ed8936;
+}
+
+.google-places-notification.info {
+    background: rgba(66, 153, 225, 0.1);
+    border-color: #4299e1;
+}
+
+/* Integração com o tema do booking */
+.booking-form .google-places-autocomplete {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 12px 45px 12px 12px;
+}
+
+.booking-form .google-places-autocomplete:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE MELHORADA */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .pac-container {
+        max-width: calc(100vw - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        border-radius: 8px !important;
+        z-index: 1000 !important; /* Valor único - UNIFICADO */
+    }
+    
+    .pac-item {
+        padding: 12px !important;
+        line-height: 24px !important;
+    }
+    
+    .pac-item-query {
+        font-size: 15px !important;
+    }
+    
+    .pac-item .pac-icon {
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 10px !important;
+    }
+    
+    .google-places-autocomplete {
+        font-size: 16px !important; /* Previne zoom no iOS */
+        padding: 14px 45px 14px 14px !important;
+    }
+    
+    .address-main-icon {
+        display: none !important;
+        right: 14px !important;
+        font-size: 15px !important;
+    }
+    
+    .address-status-icon {
+        display: none !important;
+        right: 32px !important;
+        font-size: 13px !important;
+    }
+    
+    .google-places-notification {
+        top: 10px !important;
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+}
+
+/* ========================================= */
+/* INTEGRAÇÃO COM GLASS MORPHISM */
+/* ========================================= */
+
+/* Quando dropdown está ativo, melhora o backdrop */
+.google-places-autocomplete:focus + .pac-container {
+    backdrop-filter: blur(60px) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* Integração com o tema do booking */
+.booking-form .google-places-autocomplete {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 12px 45px 12px 12px;
+}
+
+.booking-form .google-places-autocomplete:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* ========================================= */
+/* DARK MODE SUPPORT */
+/* ========================================= */
+
+@media (prefers-color-scheme: dark) {
+    .pac-container {
+        background: rgba(45, 55, 72, 0.95) !important;
+        color: white !important;
+        border: 1px solid #4a5568 !important;
+    }
+    
+    .pac-item {
+        border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+    }
+    
+    .pac-item:hover {
+        background-color: rgba(102, 126, 234, 0.2) !important;
+    }
+    
+    .pac-item-selected,
+    .pac-item-selected:hover {
+        background-color: rgba(102, 126, 234, 0.3) !important;
+    }
+    
+    .pac-item-query {
+        color: white !important;
+    }
+    
+    .pac-item span:not(.pac-item-query) {
+        color: #a0aec0 !important;
+    }
+    
+    .google-places-autocomplete {
+        background: rgba(45, 55, 72, 0.9) !important;
+        border-color: #4a5568 !important;
+        color: white !important;
+        backdrop-filter: blur(20px) !important;
+    }
+    
+    .google-places-autocomplete::placeholder {
+        color: #718096 !important;
+    }
+    
+    .google-places-autocomplete:focus {
+        border-color: #667eea !important;
+        background: rgba(55, 65, 81, 0.9) !important;
+    }
+}
+
+/* ========================================= */
+/* ANIMAÇÕES MELHORADAS */
+/* ========================================= */
+
+@keyframes fieldSuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Integração com campos de formulário existentes */
+.input-group .google-places-autocomplete {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Estados de validação */
+.was-validated .google-places-autocomplete:valid {
+    border-color: #28a745 !important;
+}
+
+.was-validated .google-places-autocomplete:invalid {
+    border-color: #dc3545 !important;
+}
+
+/* Accessibilidade */
+.google-places-autocomplete:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .google-places-autocomplete {
+        border-width: 2px;
+        border-color: #000 !important;
+    }
+    
+    .pac-container {
+        border: 2px solid #000 !important;
+        background: white !important;
+    }
+    
+    .pac-item-selected {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .google-places-autocomplete,
+    .pac-item,
+    .address-main-icon,
+    .address-status-icon {
+        display: none !important;
+        transition: none !important;
+    }
+    
+    .google-places-autocomplete.success {
+        animation: none !important;
+    }
+}
+
+/* ========================================= */
+/* INTEGRAÇÃO ESPECÍFICA COM BOOKING3.PHP */
+/* ========================================= */
+
+/* Garante compatibilidade com glass-input class */
+.glass-input.google-places-autocomplete {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.glass-input.google-places-autocomplete:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #667eea !important;
+}
+
+/* Integração com booking-bar */
+.booking-bar__input.google-places-autocomplete {
+    padding-right: 45px !important;
+}

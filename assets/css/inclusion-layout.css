@@ -1,0 +1,256 @@
+/**
+ * =========================================================
+ * ESTILOS COMPLEMENTARES PARA LAYOUT RESPONSIVO
+ * =========================================================
+ * 
+ * @file inclusion-layout.css
+ * @description Estilos específicos para layout das inclusões
+ * @version 1.0
+ * @date 2025-08-05
+ */
+
+/* ========================================= */
+/* LAYOUT RESPONSIVO DAS INCLUSÕES - MÁXIMO 3 POR LINHA */
+/* ========================================= */
+
+/* Remover sobrescritas conflitantes e trabalhar com o layout original */
+.inclusion-grid.extras-list.itens_inclusos {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: var(--space-4) !important;
+    margin-bottom: var(--space-8) !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
+/* Limitação para máximo 3 colunas em telas grandes */
+@media (min-width: 1200px) {
+    .inclusion-grid.extras-list.itens_inclusos {
+        grid-template-columns: repeat(3, 1fr) !important;
+        max-width: none !important;
+    }
+}
+
+/* Para telas médias - máximo 3 colunas */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .inclusion-grid.extras-list.itens_inclusos {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    }
+}
+
+/* ========================================= */
+/* MELHORIAS ESPECÍFICAS PARA CARDS DE INCLUSÃO */
+/* ========================================= */
+
+/* Restaurar layout horizontal original dos cards */
+.inclusion-grid .item-card {
+    padding: var(--space-6) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: var(--space-4) !important;
+    min-height: 100px !important;
+}
+
+.inclusion-grid .item-card__content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-2) !important;
+}
+
+.inclusion-grid .item-card__header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-3) !important;
+}
+
+.inclusion-grid .item-card__counter {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-3) !important;
+    flex-shrink: 0 !important;
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE PARA TELAS MENORES */
+/* ========================================= */
+
+@media (max-width: 767px) {
+    .inclusion-grid.extras-list.itens_inclusos {
+        grid-template-columns: 1fr !important;
+        gap: var(--space-3) !important;
+    }
+    
+    .inclusion-grid .item-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        min-height: 120px !important;
+        padding: var(--space-4) !important;
+        gap: var(--space-3) !important;
+    }
+    
+    .inclusion-grid .item-card__counter {
+        justify-content: center !important;
+        margin-top: var(--space-2) !important;
+    }
+}
+
+/* Para tablets - máximo 2 colunas */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .inclusion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+/* Para mobile - 1 coluna */
+@media (max-width: 767px) {
+    .inclusion-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Estilos específicos para itens de inclusão */
+.inclusion-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Garantir que o conteúdo seja distribuído corretamente */
+.inclusion-item .item-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inclusion-item .item-card__counter {
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+/* Ajustes para evitar quebra indesejada */
+.inclusion-grid .item-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Fallback para browsers que não suportam grid */
+@supports not (display: grid) {
+    .inclusion-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    
+    .inclusion-item {
+        flex: 0 1 calc(33.333% - 1rem);
+        margin-bottom: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    /* Para o 4º item quando há exatamente 4 inclusões */
+    .inclusion-item:nth-child(4):last-child {
+        margin-left: calc(16.666% + 0.5rem);
+    }
+    
+    .inclusion-item:nth-child(3n) {
+        margin-right: 0;
+    }
+    
+    @media (max-width: 1023px) {
+        .inclusion-item {
+            flex: 0 1 calc(50% - 0.75rem);
+        }
+        
+        .inclusion-item:nth-child(4):last-child {
+            margin-left: 0;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .inclusion-item {
+            flex: 0 1 100%;
+            margin-right: 0;
+        }
+        
+        .inclusion-item:nth-child(4):last-child {
+            margin-left: 0;
+        }
+    }
+}
+
+/* ========================================= */
+/* MELHORIAS VISUAIS PARA INCLUSÕES */
+/* ========================================= */
+
+/* Espaçamento consistente */
+.inclusion-grid .item-card__header {
+    margin-bottom: 0.75rem;
+}
+
+.inclusion-grid .item-card__price {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--glass-primary-dark, #5A82C1);
+}
+
+/* Efeito hover para melhor UX */
+.inclusion-item:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 8px 25px rgba(120, 190, 255, 0.15);
+}
+
+/* Garantir alinhamento consistente dos contadores */
+.inclusion-grid .item-card__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.inclusion-grid .item-card__counter .qty {
+    min-width: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Melhorar responsividade dos ícones */
+.inclusion-grid .item-card__media i {
+    font-size: 1.5rem;
+    color: var(--glass-primary, rgba(120, 190, 255, 0.95));
+}
+
+/* Melhorar legibilidade dos títulos */
+.inclusion-grid .item-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Otimização para impressão */
+@media print {
+    .inclusion-grid {
+        display: block;
+    }
+    
+    .inclusion-item {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        break-inside: avoid;
+    }
+}

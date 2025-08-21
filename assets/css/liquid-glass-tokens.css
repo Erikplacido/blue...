@@ -1,0 +1,311 @@
+/**
+ * =========================================================
+ * LIQUID GLASS DESIGN SYSTEM - CSS TOKENS
+ * =========================================================
+ * 
+ * @version 1.0.0
+ * @description Variáveis CSS organizadas baseadas no Design System
+ * @date 2025-08-05
+ * 
+ * Este arquivo contém todos os tokens de design do sistema
+ * Liquid Glass organizados de forma hierárquica e reutilizável.
+ */
+
+:root {
+  /* ========================================= */
+  /* CORES PRIMÁRIAS */
+  /* ========================================= */
+  
+  /* Azul Cristalino */
+  --lg-primary: #F0D71A;
+  --lg-primary-hex: #F0D71A;
+  --lg-primary-light: #F5E555;
+  --lg-primary-light-hex: #F5E555;
+  --lg-primary-dark: #E6C518;
+  --lg-primary-dark-hex: #E6C518;
+  
+  /* ========================================= */
+  /* SUPERFÍCIES GLASS */
+  /* ========================================= */
+  
+  --lg-surface: rgba(255, 255, 255, 0.35);
+  --lg-surface-hover: rgba(255, 255, 255, 0.5);
+  --lg-surface-active: rgba(255, 255, 255, 0.6);
+  
+  /* ========================================= */
+  /* CORES DE CONTRASTE */
+  /* ========================================= */
+  
+  --lg-navy: #11284B;
+  --lg-gold: #F0D71A;
+  --lg-gold-hover: #F5E555;
+  
+  /* ========================================= */
+  /* TIPOGRAFIA */
+  /* ========================================= */
+  
+  /* Cores de Texto */
+  --lg-text: rgba(0, 30, 60, 0.9);
+  --lg-text-light: rgba(0, 30, 60, 0.7);
+  --lg-text-muted: rgba(0, 30, 60, 0.5);
+  --lg-text-white: rgba(255, 255, 255, 0.95);
+  
+  /* Família Tipográfica */
+  --lg-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Pesos Tipográficos */
+  --lg-font-light: 300;
+  --lg-font-normal: 400;
+  --lg-font-medium: 500;
+  --lg-font-semibold: 600;
+  --lg-font-bold: 700;
+  
+  /* Escala Tipográfica */
+  --lg-text-hero: 2.5rem;
+  --lg-text-h1: 1.5rem;
+  --lg-text-h2: 1.125rem;
+  --lg-text-body: 1rem;
+  --lg-text-small: 0.875rem;
+  
+  /* Line Heights */
+  --lg-leading-tight: 1.2;
+  --lg-leading-normal: 1.3;
+  --lg-leading-relaxed: 1.4;
+  --lg-leading-loose: 1.6;
+  --lg-leading-extra-loose: 1.5;
+  
+  /* ========================================= */
+  /* ESPAÇAMENTOS */
+  /* ========================================= */
+  
+  --lg-space-1: 0.25rem;  /* 4px */
+  --lg-space-2: 0.5rem;   /* 8px */
+  --lg-space-3: 0.75rem;  /* 12px */
+  --lg-space-4: 1rem;     /* 16px */
+  --lg-space-5: 1.25rem;  /* 20px */
+  --lg-space-6: 1.5rem;   /* 24px */
+  --lg-space-8: 2rem;     /* 32px */
+  --lg-space-12: 3rem;    /* 48px */
+  
+  /* ========================================= */
+  /* RAIOS DE BORDA */
+  /* ========================================= */
+  
+  --lg-radius-glass: 16px;
+  --lg-radius-card: 20px;
+  --lg-radius-button: 12px;
+  --lg-radius-input: 14px;
+  --lg-radius-round: 50%;
+  
+  /* ========================================= */
+  /* EFEITOS DE BLUR */
+  /* ========================================= */
+  
+  --lg-blur-light: blur(8px);
+  --lg-blur-normal: blur(16px);
+  --lg-blur-strong: blur(24px);
+  
+  /* ========================================= */
+  /* SOMBRAS */
+  /* ========================================= */
+  
+  --lg-shadow: 0 8px 32px rgba(17, 40, 75, 0.3);
+  --lg-shadow-hover: 0 12px 40px rgba(17, 40, 75, 0.4);
+  --lg-shadow-strong: 0 16px 48px rgba(17, 40, 75, 0.5);
+  --lg-shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  
+  /* Sombras Específicas */
+  --lg-shadow-card: 0 4px 16px rgba(17, 40, 75, 0.25);
+  --lg-shadow-button: 0 4px 16px rgba(17, 40, 75, 0.3);
+  --lg-shadow-input: 0 2px 8px rgba(17, 40, 75, 0.2);
+  
+  /* ========================================= */
+  /* GRADIENTES */
+  /* ========================================= */
+  
+  --lg-gradient-bg: linear-gradient(135deg, 
+    rgba(240, 215, 26, 0.1) 0%, 
+    rgba(245, 229, 85, 0.15) 25%,
+    rgba(240, 215, 26, 0.1) 50%,
+    rgba(245, 229, 85, 0.12) 75%,
+    rgba(230, 197, 24, 0.08) 100%);
+    
+  --lg-gradient-card: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.25) 100%);
+    
+  --lg-gradient-button: linear-gradient(135deg,
+    #F0D71A 0%,
+    #E6C518 50%,
+    #F5E555 100%);
+    
+  --lg-gradient-text: linear-gradient(135deg, 
+    var(--lg-text), 
+    var(--lg-primary-dark));
+  
+  /* ========================================= */
+  /* TRANSIÇÕES */
+  /* ========================================= */
+  
+  --lg-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --lg-transition-fast: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  --lg-transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Durações */
+  --lg-duration-fast: 0.2s;
+  --lg-duration-normal: 0.4s;
+  --lg-duration-slow: 0.6s;
+  
+  /* Easings */
+  --lg-ease-standard: cubic-bezier(0.23, 1, 0.32, 1);
+  --lg-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --lg-ease-sharp: cubic-bezier(0.4, 0, 1, 1);
+  
+  /* ========================================= */
+  /* Z-INDEX SCALE */
+  /* ========================================= */
+  
+  --lg-z-base: 0;
+  --lg-z-raised: 10;
+  --lg-z-overlay: 100;
+  --lg-z-sticky: 1000;
+  --lg-z-modal: 2000;
+  --lg-z-tooltip: 3000;
+  
+  /* ========================================= */
+  /* OPACIDADES */
+  /* ========================================= */
+  
+  --lg-opacity-ghost: 0.05;
+  --lg-opacity-subtle: 0.1;
+  --lg-opacity-soft: 0.25;
+  --lg-opacity-medium: 0.5;
+  --lg-opacity-strong: 0.75;
+  --lg-opacity-solid: 0.95;
+  
+  /* ========================================= */
+  /* BREAKPOINTS (para uso em calc() e clamp()) */
+  /* ========================================= */
+  
+  --lg-bp-mobile: 320px;
+  --lg-bp-tablet: 768px;
+  --lg-bp-desktop: 1024px;
+  --lg-bp-large: 1200px;
+  
+  /* ========================================= */
+  /* COMPONENTES PRÉ-DEFINIDOS */
+  /* ========================================= */
+  
+  /* Glass Panel */
+  --lg-panel-bg: var(--lg-gradient-card);
+  --lg-panel-blur: var(--lg-blur-normal);
+  --lg-panel-shadow: var(--lg-shadow), var(--lg-shadow-inner);
+  --lg-panel-radius: var(--lg-radius-glass);
+  
+  /* Glass Card */
+  --lg-card-bg: var(--lg-gradient-card);
+  --lg-card-blur: var(--lg-blur-normal);
+  --lg-card-shadow: var(--lg-shadow-card);
+  --lg-card-radius: var(--lg-radius-card);
+  
+  /* Glass Input */
+  --lg-input-bg: rgba(255, 255, 255, 0.4);
+  --lg-input-blur: var(--lg-blur-light);
+  --lg-input-shadow: var(--lg-shadow-inner), var(--lg-shadow-input);
+  --lg-input-radius: var(--lg-radius-input);
+  --lg-input-focus-shadow: 0 0 0 3px rgba(17, 40, 75, 0.3);
+  
+  /* Glass Button */
+  --lg-btn-bg: var(--lg-surface);
+  --lg-btn-blur: var(--lg-blur-light);
+  --lg-btn-shadow: var(--lg-shadow-inner), var(--lg-shadow-button);
+  --lg-btn-radius: var(--lg-radius-button);
+  
+  /* Glass Button Primary */
+  --lg-btn-primary-bg: var(--lg-gradient-button);
+  --lg-btn-primary-shadow: var(--lg-shadow), var(--lg-shadow-inner), 0 4px 20px rgba(17, 40, 75, 0.4);
+  
+  /* ========================================= */
+  /* ACESSIBILIDADE */
+  /* ========================================= */
+  
+  --lg-focus-outline: 3px solid rgba(17, 40, 75, 0.3);
+  --lg-focus-offset: 2px;
+  --lg-min-touch-target: 44px;
+}
+
+/* ========================================= */
+/* RESPONSIVE FLUID TYPOGRAPHY */
+/* ========================================= */
+
+:root {
+  /* Escalas fluidas usando clamp() */
+  --lg-text-hero-fluid: clamp(2rem, 4vw, 2.5rem);
+  --lg-text-h1-fluid: clamp(1.25rem, 3vw, 1.5rem);
+  --lg-text-h2-fluid: clamp(1rem, 2.5vw, 1.125rem);
+  --lg-space-fluid: clamp(1rem, 4vw, 2rem);
+}
+
+/* ========================================= */
+/* CUSTOM PROPERTIES PARA COMPONENTES */
+/* ========================================= */
+
+/* Permite customização local sem quebrar o sistema */
+:root {
+  --lg-component-bg: var(--lg-surface);
+  --lg-component-text: var(--lg-text);
+  --lg-component-border: var(--lg-navy);
+  --lg-component-shadow: var(--lg-shadow);
+  --lg-component-radius: var(--lg-radius-card);
+}
+
+/* ========================================= */
+/* VARIÁVEIS DE CONTEXTO */
+/* ========================================= */
+
+/* Para uso em contextos específicos */
+.lg-context-dark {
+  --lg-component-bg: rgba(17, 40, 75, 0.9);
+  --lg-component-text: var(--lg-text-white);
+}
+
+.lg-context-light {
+  --lg-component-bg: rgba(255, 255, 255, 0.9);
+  --lg-component-text: var(--lg-text);
+}
+
+.lg-context-accent {
+  --lg-component-bg: var(--lg-gradient-button);
+  --lg-component-text: var(--lg-text-white);
+}
+
+/* ========================================= */
+/* MEDIA QUERIES PARA PREFERÊNCIAS */
+/* ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lg-duration-fast: 0.01ms;
+    --lg-duration-normal: 0.01ms;
+    --lg-duration-slow: 0.01ms;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Ajustes para modo escuro */
+    --lg-surface: rgba(255, 255, 255, 0.1);
+    --lg-surface-hover: rgba(255, 255, 255, 0.15);
+    --lg-text: rgba(255, 255, 255, 0.9);
+    --lg-text-light: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    /* Ajustes para alto contraste */
+    --lg-text: rgba(0, 30, 60, 1);
+    --lg-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}

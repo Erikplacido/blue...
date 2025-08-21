@@ -1,0 +1,613 @@
+/* Enhanced PWA Styles */
+
+/* Background Fetch Notifications */
+.background-fetch-progress {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--glass-white-20);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: var(--shadow-elevated);
+    z-index: 10000;
+    transform: translateX(400px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.background-fetch-progress.show {
+    transform: translateX(0);
+}
+
+.background-fetch-progress .progress-bar {
+    width: 200px;
+    height: 4px;
+    background: var(--glass-white-10);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.background-fetch-progress .progress-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Web Share Modal */
+.share-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    animation: fadeIn 0.3s ease;
+}
+
+.share-modal-content {
+    background: var(--glass-white-90);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-elevated);
+    animation: slideUp 0.3s ease;
+}
+
+.share-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.share-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.close-btn:hover {
+    background: var(--glass-white-20);
+}
+
+.share-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.share-options button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--glass-white-10);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.share-options button:hover {
+    background: var(--glass-white-20);
+    transform: translateY(-1px);
+}
+
+.share-options button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Share Success Toast */
+.share-success-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--success-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-elevated);
+    font-weight: 500;
+    z-index: 10000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.share-success-toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Shared Content Notification */
+.shared-content-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--glass-white-95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-elevated);
+    z-index: 10000;
+    animation: slideDown 0.4s ease;
+}
+
+.shared-content-notification h4 {
+    margin: 0 0 8px 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.shared-content-notification p {
+    margin: 0 0 12px 0;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.shared-content-notification a {
+    color: var(--primary-color);
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 0.9rem;
+}
+
+.shared-content-notification button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 12px;
+}
+
+/* Contact Picker Buttons */
+.contact-picker-btn {
+    background: var(--glass-white-10);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.contact-picker-btn:hover {
+    background: var(--glass-white-20);
+    transform: translateY(-1px);
+}
+
+/* Referral Contacts List */
+.referral-contacts-list {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--glass-white-05);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.referral-contacts-list h4 {
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.referral-contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--glass-white-10);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.referral-contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-info .name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.contact-info .phone {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.remove-contact {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.remove-contact:hover {
+    background: var(--danger-hover);
+}
+
+/* Payment Request UI */
+.payment-request-btn {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-medium);
+}
+
+.payment-request-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+}
+
+.payment-request-btn:active {
+    transform: translateY(0);
+}
+
+/* Payment Notifications */
+.payment-success-notification,
+.payment-error-notification {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    animation: fadeIn 0.3s ease;
+}
+
+.payment-success-notification .notification-content {
+    background: var(--glass-white-95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--success-border, rgba(16, 185, 129, 0.3));
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-elevated);
+    animation: slideUp 0.3s ease;
+}
+
+.payment-error-notification .notification-content {
+    background: var(--glass-white-95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--danger-border, rgba(239, 68, 68, 0.3));
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-elevated);
+    animation: slideUp 0.3s ease;
+}
+
+.success-icon,
+.error-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.payment-success-notification h3 {
+    color: var(--success-color);
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.payment-error-notification h3 {
+    color: var(--danger-color);
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.payment-success-notification p,
+.payment-error-notification p {
+    color: var(--text-secondary);
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+}
+
+.payment-success-notification button,
+.payment-error-notification button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Device Status Indicators */
+.device-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--glass-white-10);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.battery-indicator {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.battery-indicator.charging {
+    color: var(--success-color);
+}
+
+.battery-indicator.low {
+    color: var(--warning-color);
+    animation: pulse 2s infinite;
+}
+
+.connection-indicator {
+    color: var(--text-secondary);
+}
+
+/* Low Battery Warning */
+.low-battery-warning {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--warning-color);
+    color: var(--warning-text, #7c2d12);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    z-index: 10000;
+    animation: slideDown 0.4s ease;
+}
+
+.warning-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.warning-icon {
+    font-size: 18px;
+}
+
+.warning-content button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: inherit;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* Low Bandwidth Mode */
+.low-bandwidth-mode .heavy-content {
+    display: none;
+}
+
+.low-bandwidth-mode .image-placeholder {
+    display: block;
+    background: var(--glass-white-10);
+    border: 2px dashed var(--glass-border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.low-bandwidth-mode .data-saving-notice {
+    background: var(--info-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+/* Share Button */
+.share-btn {
+    background: var(--glass-white-10);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.share-btn:hover {
+    background: var(--glass-white-20);
+    transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .share-modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .share-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .payment-success-notification .notification-content,
+    .payment-error-notification .notification-content {
+        padding: 24px;
+        width: 95%;
+    }
+    
+    .device-status {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .referral-contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .referral-contact-item .remove-contact {
+        align-self: flex-end;
+    }
+}
+
+/* Dark Mode Adaptations */
+@media (prefers-color-scheme: dark) {
+    .share-modal {
+        background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .low-battery-warning {
+        background: #fbbf24;
+        color: #92400e;
+    }
+    
+    .data-saving-notice {
+        background: #3b82f6;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .share-options button,
+    .contact-picker-btn,
+    .payment-request-btn {
+        border-width: 2px;
+    }
+    
+    .share-success-toast,
+    .low-battery-warning {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .background-fetch-progress,
+    .share-success-toast,
+    .shared-content-notification,
+    .low-battery-warning {
+        animation: none;
+        transition: none;
+    }
+    
+    .share-options button:hover,
+    .contact-picker-btn:hover,
+    .payment-request-btn:hover {
+        transform: none;
+    }
+}
