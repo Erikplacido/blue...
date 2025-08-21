@@ -1,0 +1,169 @@
+{
+    "success": true,
+    "data": {
+        "settings": {
+            "booking_advance_hours": 24,
+            "business_email": "info@bluecleaningservices.com.au",
+            "business_name": "Blue Cleaning Services Pty Ltd",
+            "business_phone": "+61 2 9876 5432",
+            "gst_rate": 0.1
+        },
+        "inclusions": [
+            {
+                "id": 1,
+                "name": "Dusting all surfaces",
+                "icon": "fas fa-feather-alt"
+            },
+            {
+                "id": 2,
+                "name": "Vacuuming carpets",
+                "icon": "fas fa-vacuum"
+            },
+            {
+                "id": 3,
+                "name": "Mopping floors",
+                "icon": "fas fa-mop"
+            },
+            {
+                "id": 4,
+                "name": "Cleaning bathrooms",
+                "icon": "fas fa-bath"
+            },
+            {
+                "id": 5,
+                "name": "Kitchen cleaning",
+                "icon": "fas fa-utensils"
+            },
+            {
+                "id": 6,
+                "name": "Trash removal",
+                "icon": "fas fa-trash"
+            },
+            {
+                "id": 7,
+                "name": "Window cleaning (interior)",
+                "icon": "fas fa-window-restore"
+            },
+            {
+                "id": 8,
+                "name": "Bed making",
+                "icon": "fas fa-bed"
+            }
+        ],
+        "extras": [
+            {
+                "id": 1,
+                "name": "Inside oven cleaning",
+                "price": "49.00",
+                "icon": "fas fa-fire"
+            },
+            {
+                "id": 2,
+                "name": "Inside fridge cleaning",
+                "price": "39.00",
+                "icon": "fas fa-snowflake"
+            },
+            {
+                "id": 3,
+                "name": "Cabinet interior cleaning",
+                "price": "59.00",
+                "icon": "fas fa-archive"
+            },
+            {
+                "id": 4,
+                "name": "Garage cleaning",
+                "price": "79.00",
+                "icon": "fas fa-warehouse"
+            },
+            {
+                "id": 5,
+                "name": "Laundry service",
+                "price": "35.00",
+                "icon": "fas fa-tshirt"
+            },
+            {
+                "id": 6,
+                "name": "Exterior window cleaning",
+                "price": "89.00",
+                "icon": "fas fa-home"
+            }
+        ],
+        "preferences": [
+            {
+                "id": 1,
+                "name": "Eco-friendly products only",
+                "icon": "fas fa-leaf"
+            },
+            {
+                "id": 2,
+                "name": "Pet-safe cleaning products",
+                "icon": "fas fa-paw"
+            },
+            {
+                "id": 3,
+                "name": "Fragrance-free products",
+                "icon": "fas fa-wind"
+            },
+            {
+                "id": 4,
+                "name": "Extra attention to allergens",
+                "icon": "fas fa-shield-alt"
+            },
+            {
+                "id": 5,
+                "name": "Deep cleaning focus",
+                "icon": "fas fa-search-plus"
+            },
+            {
+                "id": 6,
+                "name": "Quick maintenance clean",
+                "icon": "fas fa-clock"
+            }
+        ],
+        "operating_hours": {
+            "Monday": {
+                "available": true,
+                "start": "07:00:00",
+                "end": "19:00:00"
+            },
+            "Tuesday": {
+                "available": true,
+                "start": "07:00:00",
+                "end": "19:00:00"
+            },
+            "Wednesday": {
+                "available": true,
+                "start": "07:00:00",
+                "end": "19:00:00"
+            },
+            "Thursday": {
+                "available": true,
+                "start": "07:00:00",
+                "end": "19:00:00"
+            },
+            "Friday": {
+                "available": true,
+                "start": "07:00:00",
+                "end": "19:00:00"
+            },
+            "Saturday": {
+                "available": true,
+                "start": "08:00:00",
+                "end": "17:00:00"
+            },
+            "Sunday": {
+                "available": false,
+                "start": null,
+                "end": null
+            }
+        }
+    },
+    "summary": {
+        "settings_count": 5,
+        "inclusions_count": 8,
+        "extras_count": 6,
+        "preferences_count": 6,
+        "hours_count": 7
+    },
+    "generated_at": "2025-08-09 01:52:52"
+}

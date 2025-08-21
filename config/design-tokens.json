@@ -1,0 +1,214 @@
+{
+  "liquidGlass": {
+    "metadata": {
+      "version": "1.0.0",
+      "name": "Liquid Glass Design System",
+      "description": "Sistema de design baseado em glass morphism para interfaces modernas",
+      "lastUpdate": "2025-08-05"
+    },
+    "colors": {
+      "primary": {
+        "glass-primary": {
+          "value": "rgba(120, 190, 255, 0.95)",
+          "hex": "#78BEFF",
+          "description": "Azul cristalino principal para CTAs e highlights"
+        },
+        "glass-primary-light": {
+          "value": "rgba(150, 210, 255, 0.8)",
+          "hex": "#96D2FF",
+          "description": "Azul claro para hover states e elementos secundários"
+        },
+        "glass-primary-dark": {
+          "value": "rgba(90, 160, 230, 1)",
+          "hex": "#5AA0E6",
+          "description": "Azul escuro para textos importantes e contrastes"
+        }
+      },
+      "surfaces": {
+        "glass-surface": {
+          "value": "rgba(255, 255, 255, 0.35)",
+          "description": "Superfície principal para painéis e cards"
+        },
+        "glass-surface-hover": {
+          "value": "rgba(255, 255, 255, 0.5)",
+          "description": "Superfície em estado hover"
+        },
+        "glass-surface-active": {
+          "value": "rgba(255, 255, 255, 0.6)",
+          "description": "Superfície em estado ativo/selecionado"
+        }
+      },
+      "contrast": {
+        "navy": {
+          "value": "#11284B",
+          "description": "Cor institucional para bordas e estruturas"
+        },
+        "gold": {
+          "value": "#F0D71A",
+          "description": "Dourado premium para elementos de destaque"
+        }
+      },
+      "text": {
+        "glass-text": {
+          "value": "rgba(0, 30, 60, 0.9)",
+          "description": "Texto principal com alto contraste"
+        },
+        "glass-text-light": {
+          "value": "rgba(0, 30, 60, 0.7)",
+          "description": "Texto secundário para labels e descrições"
+        },
+        "glass-text-muted": {
+          "value": "rgba(0, 30, 60, 0.5)",
+          "description": "Texto sutil para placeholders e apoio"
+        },
+        "glass-text-white": {
+          "value": "rgba(255, 255, 255, 0.95)",
+          "description": "Texto sobre fundos escuros"
+        }
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "primary": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      },
+      "fontWeights": {
+        "light": 300,
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "scale": {
+        "hero": {
+          "fontSize": "2.5rem",
+          "lineHeight": 1.2,
+          "fontWeight": 700
+        },
+        "h1": {
+          "fontSize": "1.5rem",
+          "lineHeight": 1.3,
+          "fontWeight": 600
+        },
+        "h2": {
+          "fontSize": "1.125rem",
+          "lineHeight": 1.4,
+          "fontWeight": 500
+        },
+        "body": {
+          "fontSize": "1rem",
+          "lineHeight": 1.6,
+          "fontWeight": 400
+        },
+        "small": {
+          "fontSize": "0.875rem",
+          "lineHeight": 1.5,
+          "fontWeight": 400
+        }
+      }
+    },
+    "spacing": {
+      "scale": {
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1rem",
+        "5": "1.25rem",
+        "6": "1.5rem",
+        "8": "2rem",
+        "12": "3rem"
+      },
+      "usage": {
+        "micro": "space-1",
+        "minimal": "space-2",
+        "internal": "space-3",
+        "standard": "space-4",
+        "medium": "space-5",
+        "generous": "space-6",
+        "section": "space-8",
+        "block": "space-12"
+      }
+    },
+    "borderRadius": {
+      "glass": "16px",
+      "card": "20px",
+      "button": "12px",
+      "input": "14px"
+    },
+    "effects": {
+      "blur": {
+        "light": "blur(8px)",
+        "normal": "blur(16px)",
+        "strong": "blur(24px)"
+      },
+      "shadows": {
+        "glass-shadow": "0 8px 32px rgba(120, 190, 255, 0.2)",
+        "glass-shadow-hover": "0 12px 40px rgba(120, 190, 255, 0.3)",
+        "glass-shadow-strong": "0 16px 48px rgba(120, 190, 255, 0.4)",
+        "glass-inner-shadow": "inset 0 1px 0 rgba(255, 255, 255, 0.4)"
+      },
+      "gradients": {
+        "liquid-bg": "linear-gradient(135deg, rgba(120, 190, 255, 0.1) 0%, rgba(200, 230, 255, 0.15) 25%, rgba(160, 210, 255, 0.1) 50%, rgba(180, 220, 255, 0.12) 75%, rgba(140, 200, 255, 0.08) 100%)",
+        "liquid-card": "linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.25) 100%)",
+        "liquid-button": "linear-gradient(135deg, rgba(120, 190, 255, 0.8) 0%, rgba(90, 160, 230, 0.9) 50%, rgba(110, 180, 250, 0.85) 100%)"
+      }
+    },
+    "motion": {
+      "duration": {
+        "fast": "0.2s",
+        "normal": "0.4s",
+        "slow": "0.6s"
+      },
+      "easing": {
+        "liquid-transition": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "liquid-transition-fast": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "liquid-bounce": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+      }
+    },
+    "components": {
+      "glassPanel": {
+        "background": "var(--liquid-card)",
+        "backdropFilter": "var(--glass-blur)",
+        "borderRadius": "var(--radius-glass)",
+        "boxShadow": "var(--glass-shadow), var(--glass-inner-shadow)"
+      },
+      "glassCard": {
+        "background": "var(--liquid-card)",
+        "backdropFilter": "var(--glass-blur)",
+        "borderRadius": "var(--radius-card)",
+        "boxShadow": "var(--glass-shadow)"
+      },
+      "glassInput": {
+        "background": "rgba(255, 255, 255, 0.4)",
+        "backdropFilter": "var(--glass-blur-light)",
+        "borderRadius": "var(--radius-input)",
+        "boxShadow": "var(--glass-inner-shadow), 0 2px 8px rgba(90, 160, 230, 0.1)"
+      },
+      "glassButton": {
+        "background": "var(--glass-surface)",
+        "backdropFilter": "var(--glass-blur-light)",
+        "borderRadius": "var(--radius-button)",
+        "boxShadow": "var(--glass-inner-shadow), 0 4px 16px rgba(120, 190, 255, 0.2)"
+      },
+      "glassButtonPrimary": {
+        "background": "var(--liquid-button)",
+        "borderRadius": "var(--radius-button)",
+        "boxShadow": "var(--glass-shadow), var(--glass-inner-shadow), 0 4px 20px rgba(120, 190, 255, 0.4)"
+      }
+    },
+    "breakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "largeDesktop": "1200px"
+    },
+    "accessibility": {
+      "minContrastRatio": 4.5,
+      "focusOutlineWidth": "3px",
+      "focusOutlineColor": "rgba(120, 190, 255, 0.2)",
+      "reducedMotion": {
+        "animationDuration": "0.01ms",
+        "transitionDuration": "0.01ms"
+      }
+    }
+  }
+}
